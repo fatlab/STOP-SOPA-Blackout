@@ -1,17 +1,16 @@
 /*
-  STOP SOPA
-  Embeddable code for SOPA blackout solidarity
+  STOP SOPA/PIPA #000000-out
+  Embeddable widget for pro-Internet solidarity
 
-  by Greg Leuch <http://gleuch.com> / @gleuch,
-  based on the blocker series by @gleuch (Shaved Bieber, Tinted Sheen, Ctrl+F'd, and more).
+  More info:
+  https://fatlab.github.com/stop-sopa-blackout
 
-  MIT License - http://creativecommons.org/licenses/MIT.
+  This source made freely available under an MIT License:
+  http://opensource.org/licenses/mit-license.php
 
-  ------------------------------------------------------------------------------------
- 
 */
 
-function FATLAB_sopa_blackout_start($_) {
+function sopa_blackout_start($_) {
   $_.fn.reverse = function(){return this.pushStack(this.get().reverse(), arguments);};
 
   (function($_) {
@@ -83,7 +82,7 @@ function FATLAB_sopa_blackout_start($_) {
             }
           } catch(e) {}
         });
-        
+
         // $_('input[type=text]').each(function() {if ($_(this).val().match($_.sopa_blackout.settings.search) ) $_(this).val( $_.sopa_blackout.pluck($_(this).val()) );});
         // $_('textarea, option').each(function() {if ($_(this).html().match($_.sopa_blackout.settings.search) ) $_(this).html( $_.sopa_blackout.pluck($_(this).html()) );});
 
@@ -100,11 +99,11 @@ function FATLAB_sopa_blackout_start($_) {
   })($_);
 
   if (localStorage) {
-    if (localStorage.disable_sopa_blackout != '1' || !FATLAB_Stop_SOPA.promote) {
-      $_.sopa_blackout('body', FATLAB_Stop_SOPA.color);
+    if (localStorage.disable_sopa_blackout != '1' || !Stop_SOPA.promote) {
+      $_.sopa_blackout('body', Stop_SOPA.color);
     }
 
-    if (!!FATLAB_Stop_SOPA.promote) {
+    if (!!Stop_SOPA.promote) {
       var html = '';
       if (localStorage.disable_sopa_blackout == '1') {
         html = ' \
@@ -112,7 +111,7 @@ function FATLAB_sopa_blackout_start($_) {
            <a onmouseover="this.style.opacity=.64;" onmouseout="this.style.opacity=1.0;" style="display: inline-block; margin: 5px; padding: 8px 8px 7px 8px; font: 18px/18px normal Helvetica,Arial,sans-serif; font-weight: bold; color: #fff; background: #f0f; text-shadow: 0 1px 2px rgba(0,0,0,.18); box-shadow: 0 1px 2px rgba(0,0,0,.18); font-weight: bold; border: 1px solid #f0f; border-radius: 7px;" href="http://bit.ly/FATSOPA" title="http://fightforthefuture.org/" target="_blank" id="sopa_blackout_action">STOP SOPA!</a> \
           </div> \
         ';
-        
+
         setInterval(function() {
           var el = $_('#sopa_blackout_promote a');
           if (el.size() > 0) {
@@ -163,7 +162,7 @@ function FATLAB_sopa_blackout_start($_) {
         $_.sopa_blackout.settings.page_height = h;
         $_.sopa_blackout.settings.init = false;
         $_.sopa_blackout.settings.finish = false;
-        $_.sopa_blackout('body', FATLAB_Stop_SOPA.color);
+        $_.sopa_blackout('body', Stop_SOPA.color);
       }
     }, 1000);
   }
@@ -180,15 +179,15 @@ try {
     document.write('<scr'+'ipt src="'+ ("https:" == document.location.protocol ? 'https:' : 'http:') +'//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></scr'+'ipt>');
   }
 
-  if (typeof(FATLAB_Stop_SOPA) != 'object') var FATLAB_Stop_SOPA = {promote:true}
-  if (typeof(FATLAB_Stop_SOPA.promote) == 'undefined') FATLAB_Stop_SOPA.promote = true;
-  if (typeof(FATLAB_Stop_SOPA.color) == 'undefined') FATLAB_Stop_SOPA.color = '#000000';
+  if (typeof(Stop_SOPA) != 'object') var Stop_SOPA = {promote:true}
+  if (typeof(Stop_SOPA.promote) == 'undefined') Stop_SOPA.promote = true;
+  if (typeof(Stop_SOPA.color) == 'undefined') Stop_SOPA.color = '#000000';
 
   setTimeout(function() {
     try {
       if (!jQuery('body').hasClass('stop_sopa_blackout')) {
         jQuery('body').addClass('stop_sopa_blackout');
-        FATLAB_sopa_blackout_start(jQuery);
+        sopa_blackout_start(jQuery);
       }
     } catch(err) {}
   }, (typeof(jQuery) == 'undefined' ? 1000 : 100));
