@@ -179,12 +179,13 @@ try {
     document.write('<scr'+'ipt src="'+ ("https:" == document.location.protocol ? 'https:' : 'http:') +'//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></scr'+'ipt>');
   }
 
-  if (typeof(Stop_SOPA) != 'object') var Stop_SOPA = {promote:true}
+  if (typeof(Stop_SOPA) != 'object') var Stop_SOPA = {promote:true};
   if (typeof(Stop_SOPA.promote) == 'undefined') Stop_SOPA.promote = true;
   if (typeof(Stop_SOPA.color) == 'undefined') Stop_SOPA.color = '#000000';
 
   setTimeout(function() {
     try {
+      jQuery.noConflict();
       if (!jQuery('body').hasClass('stop_sopa_blackout')) {
         jQuery('body').addClass('stop_sopa_blackout');
         sopa_blackout_start(jQuery);
